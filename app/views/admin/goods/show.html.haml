@@ -1,0 +1,53 @@
+%table.table.table-condensed
+  %tr
+    %th 标题
+    %td= utf8_html(@good.title)
+  %tr
+    %th 品牌
+    %td= utf8_html(@good.brand)
+  %tr
+    %th 产品编号
+    %td= @good.sequence_number
+  %tr
+    %th 可选选项
+    %td= utf8_html(@good.choices)
+  %tr
+    %th 说明（日文原版）
+    %td= utf8_html(@good.description_j)
+  %tr
+    %th 说明（中文）
+    %td= utf8_html(@good.description_c)
+  %tr
+    %th 获取渠道
+    %td= utf8_html(@good.source)
+  %tr
+    %th 原价
+    %td #{@good.price} 日元
+  %tr
+    %th 建议价格
+    %td #{@good.price*0.06} 人民币
+  %tr
+    %th 状态
+    %td 
+  %tr
+    %th 商品图1
+    %td= @good.image_1? ? image_tag(@good.image_1_url) : image_tag("no.jpg")
+  %tr
+    %th 商品图2
+    %td= @good.image_2? ? image_tag(@good.image_2_url) : image_tag("no.jpg")
+  %tr
+    %th 商品图3
+    %td= @good.image_3? ? image_tag(@good.image_3_url) : image_tag("no.jpg")
+  %tr
+    %th 备注说明
+    %td= @good.comment
+
+%center
+  - if @good.prev
+    = link_to "< Prev", admin_good_path(@good.prev), class: ['btn','btn-sm', 'btn-warning']
+  - if @good.next
+    = link_to "Next >", admin_good_path(@good.next), class: ['btn','btn-sm', 'btn-info']
+
+= link_to '编辑', edit_admin_good_path(@good)
+\|
+= link_to_function "返回", "history.back()"

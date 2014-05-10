@@ -1,0 +1,72 @@
+.form-group
+  = t.label :title, '标题(必须)', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { value: utf8(@good.title),  class: 'form-control', placeholder: '输入标题'}
+    %p.help-block Input title within 255 characters.
+.form-group
+  = t.label :brand, '品牌', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :brand, { value: utf8(@good.brand),  class: 'form-control', placeholder: '输入品牌'}
+    %p.help-block Input brand within 255 characters.
+.form-group
+  = t.label :sequence_bumber, '产品编号', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { class: 'form-control', placeholder: '输入产品编号'}
+    %p.help-block Input sequence num within 255 characters.
+.form-group
+  = t.label :choices, '可选选项', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :choices, { value: utf8(@good.choices),  class: 'form-control', placeholder: '可选选项'}
+    %p.help-block Input choices within 255 characters.
+.form-group
+  = t.label :description_j, '说明（日文原版）', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :description_j, { value: utf8(@good.description_j), class: 'form-control', placeholder: '日文说明', rows: 10}
+    %p.help-block Description in Japanese
+.form-group
+  = t.label :description_c, '说明（中文）', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :description_c, { value: utf8(@good.description_c), class: 'form-control', placeholder: '中文说明', rows: 10}
+    %p.help-block Description in Chinese
+.form-group
+  = t.label :source, '获取渠道', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :source, { value: utf8(@good.source),  class: 'form-control', placeholder: '获取渠道'}
+    %p.help-block Source
+.form-group
+  = t.label :price, '原价（日元）', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.number_field :price, { class: 'form-control', placeholder: '原价'}
+    %p.help-block Price
+.form-group
+  = t.label :state, '状态', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
+    %p.help-block State
+.form-group
+  = t.label :image_1, '商品图1', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.file_field :image_1
+    %p.help-block Select and updoad your pictures with format jpg, jpeg, gif or png.
+    = t.hidden_field :image_1_cache
+.form-group
+  = t.label :image_2, '商品图2', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.file_field :image_2
+    %p.help-block Select and updoad your pictures with format jpg, jpeg, gif or png.
+    = t.hidden_field :image_2_cache
+.form-group
+  = t.label :image_3, '商品图3', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.file_field :image_3
+    %p.help-block Select and updoad your pictures with format jpg, jpeg, gif or png.
+    = t.hidden_field :image_3_cache
+.form-group
+  = t.label :comment, '备注说明', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :comment, { value: utf8(@good.comment), class: 'form-control', placeholder: '备注说明', rows: 10}
+    %p.help-block Comment
+
+= image_tag(@good.image_1_url) if @good.image_1?
+= image_tag(@good.image_2_url) if @good.image_2?
+= image_tag(@good.image_3_url) if @good.image_3?

@@ -1,0 +1,5 @@
+.alert.alert-warning
+  %strong Error!
+  %ul
+    - model.errors.full_messages.each do |message|
+      %li= message

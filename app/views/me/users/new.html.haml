@@ -1,0 +1,22 @@
+- if @user.errors.any?
+  = render partial: 'alert_error', locals: { model: @user }
+= form_for :user, method: 'post', url: me_users_path, html: { class: 'form-signin-for-regist', role: 'form', align: 'center'} do |t|
+  %h2  Signin information
+  .form-group
+    = label 'Nickname', 'Nickname', class: ['col-sm-3', 'control-label']
+    .col-sm-8
+      = t.text_field :name, { class: 'form-control', placeholder: 'Nickname'}
+  .form-group
+    = label 'Email', 'Email', class: ['col-sm-3', 'control-label']
+    .col-sm-8
+      = t.text_field :email, { class: 'form-control', placeholder: 'Email', type: 'email'}
+  .form-group
+    = label 'Password', 'Password', class: ['col-sm-3', 'control-label']
+    .col-sm-8
+      = t.password_field :password, { class: 'form-control', placeholder: 'Password', type: 'password'}
+  .form-group
+    = label 'Password Again', 'Password Again', class: ['col-sm-3', 'control-label']
+    .col-sm-8
+      = t.password_field :password_confirmation, { class: 'form-control', placeholder: 'Password Again', type: 'password'}
+  .form-group
+    = t.submit 'Regist!', class: ['btn', 'btn-lg', 'btn-primary']

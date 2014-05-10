@@ -1,0 +1,6 @@
+%h1 Login
+%p Hello Ruby!
+- if current_user == nil
+  = link_to "login", login_path
+- else
+  = link_to 'logout', login_path, :confirm => 'Are you sure to logout?', :method => :delete

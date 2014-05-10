@@ -1,0 +1,41 @@
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  / Indicators
+  %ol.carousel-indicators
+    %li{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li.active{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+  .carousel-inner
+    .item
+      %img{:alt => "First slide", "data-src" => "holder.js/900x500/auto/#777:#7a7a7a/text:First slide", :src => "/assets/images/DSC00115.JPG"}
+      .container
+        .carousel-caption
+          - unless mobile_user_agent?
+            %h1 This is an blog example.
+          %p
+            Number of images is not limited. Your can view more examples from
+            = link_to 'here', '/visitor/users/1/home'
+            ,join us NOW!
+          %p
+            %a.btn.btn-lg.btn-primary{:href => "/me/users/new", :role => "button"} Sign up today
+    .item.active
+      %img{:alt => "Second slide", "data-src" => "holder.js/900x500/auto/#666:#6a6a6a/text:Second slide", :src => "/assets/images/DSC00134.JPG"}/
+      .container
+        .carousel-caption
+          - unless mobile_user_agent?
+            %h1 BIM is a web site of blogs, images and musics.
+          %p We drive your images like a blog. Your can upload your pictures with title and introduction. We generate an album's like view for your blog to public automatic.
+          %p
+            %a.btn.btn-lg.btn-primary{:href => "/visitor/about", :role => "button"} Learn more
+    .item
+      %img{:alt => "Third slide", "data-src" => "holder.js/900x500/auto/#555:#5a5a5a/text:Third slide", :src => "/assets/images/IMGP4775.JPG"}/
+      .container
+        .carousel-caption
+          - unless mobile_user_agent?
+            %h1 Markdown format blog is supported and musics can be updated and shared.
+          %p 
+          %p
+            %a.btn.btn-lg.btn-primary{:href => "/visitor/posts", :role => "button"} Browse gallery
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-left
+  %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-right

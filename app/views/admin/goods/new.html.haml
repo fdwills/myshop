@@ -1,0 +1,9 @@
+- if @good.errors.any?
+  = render partial: 'alert_error', locals: { model: @good }
+= form_for :good, method: 'post', url: admin_goods_path, html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 新建商品
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    .col-sm-offset-3
+      = t.submit '创建', class: ['btn', 'btn-md', 'btn-primary']
+

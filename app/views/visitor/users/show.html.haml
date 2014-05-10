@@ -1,0 +1,38 @@
+.panel.panel-default.panel-primary
+  .panel-heading
+    %h1.panel-title Personal Information
+  %pre
+    %table.table
+      %tr
+        %td= @user.icon? ? image_tag(@user.icon_url) : image_tag("Default.png")
+        %td= @user.name
+      %tr
+        %th email
+        %td= @user.email
+      %tr
+        %th birthday
+        %td= @user.birthday.to_s(:db)
+      %tr
+        %th pref
+        %td= @user.pref
+      %tr
+        %th likes
+        %td= @user.likes
+      %tr
+        %th introduction
+        %td= @user.introduction
+
+- if @posts.present?
+  .panel.panel-default.panel-primary
+    .panel-heading
+      %h1.panel-title Personal Posts
+    %pre
+      %table.table
+        %tr.info
+        - @posts.each do |post|
+          %tr
+            %td{rowspan: "2"}
+              = link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
+            %td= short_utf8_html(post.title.empty? ? '(not title)' : post.title, 16)
+          %tr
+            %td= utf8_html(post.content)

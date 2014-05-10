@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Myapp'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Myapp'}"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    %link{:href => "/assets/stylesheets/blog.css", :rel => "stylesheet"}
+    - if mobile_user_agent?
+      %link{:href => "/assets/stylesheets/carousel_mb.css", :rel => "stylesheet"}
+    - else
+      %link{:href => "/assets/stylesheets/carousel.css", :rel => "stylesheet"}
+    %style#holderjs-style{:type => "text/css"}
+  %body{:style => ""}
+    = yield
+= debug(params) if Rails.env.development?
