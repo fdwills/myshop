@@ -1,5 +1,5 @@
 class Me::OrdersController < MeController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :change_state]
 
   # GET /orders
   def index
@@ -44,6 +44,14 @@ class Me::OrdersController < MeController
     redirect_to me_user_orders_path(current_user), notice: '删除订单成功.'
   end
 
+  def change_state
+    if @order.user_state_changeable? && @order.change_state
+      redirect_to me_user_order_path(current_user, @order), notice: '更新订单状态成功.'
+    else
+      redirect_to me_user_order_path(current_user, @order), notice: '更新订单状态失败.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -52,6 +60,6 @@ class Me::OrdersController < MeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:title, :state, :good_id, :quantity)
+      params.require(:order).permit(:good_id, :quantity, :description)
     end
 end

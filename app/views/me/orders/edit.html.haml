@@ -1,0 +1,8 @@
+- if @order.errors.any?
+  = render partial: 'alert_error', locals: { model: @order }
+= form_for :order, method: 'put', url: me_user_order_path(current_user, @order), html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 更新订单：
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    %br
+    %center= t.submit '更新', class: ['btn', 'btn-md', 'btn-primary']

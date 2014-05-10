@@ -28,7 +28,7 @@ test:
   <<: *default
 
 production:
-  database: myshop_test
+  database: myshop_production
   <<: *default
 
 ###### for common login ####
@@ -41,5 +41,5 @@ login_test:
   <<: *default
 
 login_production:
-  database: fdwills_asia_test
+  database: fdwills_asia_production
   <<: *default

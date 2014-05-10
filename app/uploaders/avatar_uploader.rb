@@ -5,7 +5,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  process :resize_to_limit => [1000, 1000]
+  process :resize_to_limit => [800, 800]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "assets/upload/#{model.class.to_s.underscore}/#{mounted_as}/#{model.user_id}"
+    "assets/upload/#{model.class.to_s.underscore}/#{mounted_as}"
     #"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 

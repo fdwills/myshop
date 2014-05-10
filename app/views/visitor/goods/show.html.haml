@@ -28,7 +28,7 @@
     %td #{@good.price*0.06} 人民币
   %tr
     %th 状态
-    %td 
+    %td= @good.released? ? '可下单' : '草稿'
   %tr
     %th 商品图1
     %td= @good.image_1? ? image_tag(@good.image_1_url) : image_tag("no.jpg")
@@ -41,14 +41,24 @@
   %tr
     %th 备注说明
     %td= @good.comment
-  %tr
-    %td= simple_format utf8(@good.introduction)
 
 %center
   - if @good.prev
     = link_to "< Prev", visitor_good_path(@good.prev), class: ['btn','btn-sm', 'btn-warning']
   - if @good.next
     = link_to "Next >", visitor_good_path(@good.next), class: ['btn','btn-sm', 'btn-info']
+
+.alert.alert-success
+  .glyphicon.glyphicon-user
+  对此商品下单
+- if login?
+  = form_for :order, method: 'post', url: me_user_orders_path(current_user, good_id: @good.id), html: { class: 'form-horizontal', role: 'form' } do |t|
+    = render partial: 'order_form', locals: { t: t}
+    .form-group
+      .col-sm-offset-3
+        = t.submit '下单', class: ['btn', 'btn-md', 'btn-primary']
+- else
+  %h3 请先登录
 
 - if admin?
   = link_to '编辑', edit_admin_good_path(@good)

@@ -1,0 +1,18 @@
+%h3 全部订单一览
+
+%table.table.table-condensed
+  %tr.info
+    %th 订单商品
+    %th 数目
+    %th 状态
+    %th 下单人
+    %th 创建日期
+  - @orders.try(:each) do |order|
+    %tr
+      %td= link_to utf8_html(order.good.title), admin_order_path(order)
+      %td= order.quantity
+      %td= order.show_state
+      %td= link_to utf8_html(order.user.name), visitor_user_path(order.user)
+      %td= order.created_at.to_s(:db)
+
+%center= paginate @orders if @orders.present?

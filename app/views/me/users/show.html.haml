@@ -1,51 +1,26 @@
 - if login?
   .alert.alert-success
     .glyphicon.glyphicon-hand-right
-    Basic Action
+    订单管理
   %table.table.table-striped.table-bordered
     %tr
-      %td Gallery
+      %td 我的订单
       %td
-        = link_to 'gallery', me_user_resources_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+        = link_to '订单列表', me_user_orders_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
         %br
         %br
-        %p.help-block Upload or edit your pictures.
-    %tr
-      %td Album preview
-      %td
-        = link_to 'preview', home_me_user_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
-        %br
-        %br
-        %p.help-block All your released pictures give an default album, Preview your default album.
-    %tr
-      %td Posts
-      %td
-        = link_to 'Posts', me_user_posts_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
-        %br
-        %br
-        %p.help-block A post is other albums except default album. You can add the same picture from gallery to different posts.
-    %tr
-      %td Blog
-      %td
-        = link_to 'Blogs', me_user_blogs_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
-        %br
-        %br
-        %p.help-block Create or edit your blog.
-    %tr
-      %td Music
-      %td
-        = link_to 'musics', me_user_musics_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
-        %br
-        %br
-        %p.help-block Upload or edit your musics.
+        %p.help-block 我的所有状态的订单管理
     - if admin?
       %tr
-        %th Informations
-        %td= link_to 'information', admin_inforamtions_path, class: ['col-sm-4','btn', 'btn-sm', 'btn-primary']
+        %th 全部商品
+        %td= link_to '商品管理', admin_goods_path, class: ['col-sm-4','btn', 'btn-sm', 'btn-primary']
+      %tr
+        %th 全部订单
+        %td= link_to '订单管理', admin_orders_path, class: ['col-sm-4','btn', 'btn-sm', 'btn-primary']
 
   .alert.alert-success
     .glyphicon.glyphicon-user
-    Update Personal Informaion
+    个人信息管理
   - if @user.errors.any?
     = render partial: 'alert_error', locals: { model: @user }
   = form_for current_user, as: :user, method: :put, url: me_user_path(current_user), html: { class: ['form-horizontal'], role: 'form'} do |t|

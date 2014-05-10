@@ -6,4 +6,8 @@ class VisitorController < ApplicationController
       render_not_permit
     end
   end
+
+  def top
+    redirect_to visitor_goods_path
+  end
 end

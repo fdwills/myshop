@@ -12,12 +12,12 @@
           = link_to '商品一览', visitor_goods_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            -#%li= link_to 'Blog', visitor_blogs_path, class: 'active'
+            %li= link_to '订单一览', visitor_orders_path, class: 'active'
             -#%li= link_to 'Image', visitor_posts_path
             -#%li= link_to 'Music', visitor_musics_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                others
+                其他
                 %b.caret
               %ul.dropdown-menu
                 %li= link_to 'GitHub', 'https://github.com/fdwills/myapp'

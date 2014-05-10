@@ -4,6 +4,7 @@ class Good < ActiveRecord::Base
   ST_RELEASED = 0
   ST_DRAFT    = 1
 
+  has_many :orders
 
   mount_uploader :image_1, AvatarUploader
   mount_uploader :image_2, AvatarUploader
@@ -13,4 +14,8 @@ class Good < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 255 }
   validates_inclusion_of :state, :in => [ST_RELEASED, ST_DRAFT]
+
+  def released?
+    self.state == ST_RELEASED
+  end
 end

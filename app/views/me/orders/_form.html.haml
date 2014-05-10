@@ -1,0 +1,14 @@
+.form-group
+  = t.label :good_id, '产品名', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = utf8_html(@order.good.title)
+.form-group
+  = t.label :quantity, '数目', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.number_field :quantity, { class: 'form-control', placeholder: '下单数目'}
+    %p.help-block 输入，整数
+.form-group
+  = t.label :description, '备注', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :description, { class: 'form-control', placeholder: '备注或留言', rows: 10}
+    %p.help-block 备注或留言

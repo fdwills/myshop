@@ -1,0 +1,48 @@
+%table.table.table-condensed
+  %tr
+    %th 商品
+    %td= link_to utf8_html(@order.good.title), visitor_good_path(@order.good)
+  %tr
+    %th 数目
+    %td= @order.quantity
+  %tr
+    %th 下单人
+    %td= link_to utf8_html(@order.user.name), visitor_user_path(@order.user)
+  %tr
+    %th 状态
+    %td= @order.show_state
+  %tr
+    %th 创建时间
+    %td= @order.created_at.to_s(:db)
+  %tr
+    %th 处理开始时间
+    %td=@order.accepted_at.nil? ? nil : @order.accepted_at.to_s(:db)
+  %tr
+    %th EMS时间
+    %td= @order.delivered_at.nil? ? nil : @order.delivered_at.to_s(:db)
+  %tr
+    %th EMS单号
+    %td= @order.deliver_number
+  %tr
+    %th 接受到时间
+    %td= @order.received_at.nil? ? nil : @order.received_at.to_s(:db)
+  %tr
+    %th 处理结束时间
+    %td= @order.closed_at.nil? ? nil : @order.closed_at.to_s(:db)
+  %tr
+    %th 备注
+    %td= utf8_html(@order.description)
+  %tr
+    %th 评论
+    %td= utf8_html(@order.comment)
+
+%center
+  - if @order.prev
+    = link_to "< Prev", visitor_order_path(@order.prev), class: ['btn','btn-sm', 'btn-warning']
+  - if @order.next
+    = link_to "Next >", visitor_order_path(@order.next), class: ['btn','btn-sm', 'btn-info']
+
+- if login? && @order.editable? && @order.user_id == current_user.id
+  = link_to '编辑', edit_me_user_order_path(current_user, @order)
+  \|
+= link_to_function "返回", "history.back()"

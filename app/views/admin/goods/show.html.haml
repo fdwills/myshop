@@ -28,7 +28,7 @@
     %td #{@good.price*0.06} 人民币
   %tr
     %th 状态
-    %td 
+    %td= @good.released? ? '可下单' : '草稿'
   %tr
     %th 商品图1
     %td= @good.image_1? ? image_tag(@good.image_1_url) : image_tag("no.jpg")

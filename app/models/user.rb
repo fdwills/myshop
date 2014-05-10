@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  establish_connection "login_#{RAILS_ENV}"
+  establish_connection "login_#{Rails.env}"
   has_secure_password
 
   mount_uploader :icon, IconUploader

@@ -1,0 +1,59 @@
+- if @order.editable?
+  .pull-right
+    %td= link_to '删除', me_user_order_path(current_user, @order), method: :delete, data: { confirm: "确定删除 #{utf8_html(@order.good.title)} 的订单吗?" }, class: ['btn', 'btn-lg', 'btn-danger']
+- else
+  .alert.alert-info
+    NOTICE: 在处理中/处理结束不能修改或删除
+    %br
+    NOTICE: 变灰色的状态按钮是发货方才能转换的状态
+%table.table.table-condensed
+  %tr
+    %th 商品
+    %td= link_to utf8_html(@order.good.title), visitor_good_path(@order.good)
+  %tr
+    %th 数目
+    %td= @order.quantity
+  %tr
+    %th 当前状态
+    %td= @order.show_state
+  %tr
+    %th 状态转换
+    - if @order.closed?
+      %td= @order.show_next_state
+    - else
+      %td= link_to "更改状态为 #{@order.show_next_state}", change_state_me_user_order_path(current_user, @order), method: :put, disabled: @order.admin_state_changeable?,data: { confirm: "确定更改状态为 #{@order.show_next_state} 吗?" }, class: ['btn', 'btn-sm', 'btn-primary']
+  %tr
+    %th 创建时间
+    %td= @order.created_at.to_s(:db)
+  %tr
+    %th 处理开始时间
+    %td= @order.accepted_at.nil? ? nil : @order.accepted_at.to_s(:db)
+  %tr
+    %th EMS时间
+    %td= @order.delivered_at.nil? ? nil : @order.delivered_at.to_s(:db)
+  %tr
+    %th EMS单号
+    %td= @order.deliver_number
+  %tr
+    %th 接受到时间
+    %td= @order.received_at.nil? ? nil : @order.received_at.to_s(:db)
+  %tr
+    %th 处理结束时间
+    %td= @order.closed_at.nil? ? nil : @order.closed_at.to_s(:db)
+  %tr
+    %th 备注
+    %td= utf8_html(@order.description)
+  %tr
+    %th 评论
+    %td= utf8_html(@order.comment)
+
+%center
+  - if @order.prev('self')
+    = link_to "< Prev", me_user_order_path(current_user, @order.prev('self')), class: ['btn','btn-sm', 'btn-warning']
+  - if @order.next('self')
+    = link_to "Next >", me_user_order_path(current_user, @order.next('self')), class: ['btn','btn-sm', 'btn-info']
+
+- if @order.editable?
+  = link_to '编辑', edit_me_user_order_path(current_user, @order)
+  \|
+= link_to_function "返回", "history.back()"
