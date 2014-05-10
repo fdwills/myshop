@@ -13,10 +13,10 @@
     %td= utf8_html(@good.choices)
   %tr
     %th 说明（日文原版）
-    %td= utf8_html(@good.description_j)
+    %td= simple_format utf8(@good.description_j)
   %tr
     %th 说明（中文）
-    %td= utf8_html(@good.description_c)
+    %td= simple_format utf8(@good.description_c)
   %tr
     %th 获取渠道
     %td= utf8_html(@good.source)
@@ -40,7 +40,7 @@
     %td= @good.image_3? ? image_tag(@good.image_3_url) : image_tag("no.jpg")
   %tr
     %th 备注说明
-    %td= @good.comment
+    %td= simple_format utf8(@good.comment)
 
 %center
   - if @good.prev

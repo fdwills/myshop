@@ -9,9 +9,9 @@
     = t.text_field :brand, { value: utf8(@good.brand),  class: 'form-control', placeholder: '输入品牌'}
     %p.help-block Input brand within 255 characters.
 .form-group
-  = t.label :sequence_bumber, '产品编号', class: ['col-sm-3', 'control-label']
+  = t.label :sequence_number, '产品编号', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_field :sequence_bumber, { class: 'form-control', placeholder: '输入产品编号'}
+    = t.text_field :sequence_number, { class: 'form-control', placeholder: '输入产品编号'}
     %p.help-block Input sequence num within 255 characters.
 .form-group
   = t.label :choices, '可选选项', class: ['col-sm-3', 'control-label']

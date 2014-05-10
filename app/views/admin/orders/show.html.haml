@@ -41,10 +41,10 @@
     %td= @order.closed_at.nil? ? nil : @order.closed_at.to_s(:db)
   %tr
     %th 备注
-    %td= utf8_html(@order.description)
+    %td= simple_format utf8(@order.description)
   %tr
     %th 评论
-    %td= utf8_html(@order.comment)
+    %td= simple_format utf8(@order.comment)
 
 %center
   - if @order.prev
