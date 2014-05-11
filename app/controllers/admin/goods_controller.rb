@@ -43,6 +43,6 @@ class Admin::GoodsController < AdminController
     end
 
     def good_params
-      params.require(:good).permit(:title, :brand, :sequence_number, :choices, :description_j, :description_c, :price, :state, :image_1, :image_2, :image_3, :comment)
+      params.require(:good).permit(:title, :brand, :sequence_number, :choices, :description_j, :description_c, :price, :state, :image_1, :image_2, :image_3, :comment, :source)
     end
 end

@@ -30,7 +30,9 @@ class Me::OrdersController < MeController
   end
 
   def update
-    if @order.update(order_params)
+    if !@order.editable?
+      redirect_to me_user_order_path(current_user, @order), flash: { error: '订单状态已改变无法修改内容！' }
+    elsif @order.update(order_params)
       redirect_to me_user_order_path(current_user, @order), notice: '更新订单成功.'
     else
       render action: 'edit'
@@ -40,22 +42,25 @@ class Me::OrdersController < MeController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
-    redirect_to me_user_orders_path(current_user), notice: '删除订单成功.'
+    if @order.editable? && @order.destroy
+      redirect_to me_user_orders_path(current_user), notice: '删除订单成功.'
+    else
+      redirect_to me_user_order_path(current_user, @order), flash: { error: '订单状态已改变暂时无法删除！' }
+    end
   end
 
   def change_state
     if @order.user_state_changeable? && @order.change_state
       redirect_to me_user_order_path(current_user, @order), notice: '更新订单状态成功.'
     else
-      redirect_to me_user_order_path(current_user, @order), notice: '更新订单状态失败.'
+      redirect_to me_user_order_path(current_user, @order), flash: { error: '订单状态暂时无法更改！' }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      @order = current_user.orders.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

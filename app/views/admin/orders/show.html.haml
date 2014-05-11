@@ -1,3 +1,8 @@
+%h3 订单详细
+
+.alert.alert-info
+  NOTICE: 管理员页面
+
 - if !@order.editable?
   .alert.alert-info NOTICE: 删除慎重在处理中/处理结束
 .pull-right
@@ -48,9 +53,9 @@
 
 %center
   - if @order.prev
-    = link_to "< Prev", admin_order_path(@order.prev), class: ['btn','btn-sm', 'btn-warning']
+    = link_to "< 前往上一订单", admin_order_path(@order.prev), class: ['btn','btn-sm', 'btn-warning']
   - if @order.next
-    = link_to "Next >", admin_order_path(@order.next), class: ['btn','btn-sm', 'btn-info']
+    = link_to "前往下一订单 >", admin_order_path(@order.next), class: ['btn','btn-sm', 'btn-info']
 
 = link_to '编辑', edit_admin_order_path(@order)
 \|

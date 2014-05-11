@@ -1,11 +1,12 @@
+%h3 订单详细
+.alert.alert-info
+  NOTICE: 变灰色的状态按钮是发货方才能转换的状态
 - if @order.editable?
   .pull-right
     %td= link_to '删除', me_user_order_path(current_user, @order), method: :delete, data: { confirm: "确定删除 #{utf8_html(@order.good.title)} 的订单吗?" }, class: ['btn', 'btn-lg', 'btn-danger']
 - else
   .alert.alert-info
     NOTICE: 在处理中/处理结束不能修改或删除
-    %br
-    NOTICE: 变灰色的状态按钮是发货方才能转换的状态
 %table.table.table-condensed
   %tr
     %th 商品
@@ -49,9 +50,9 @@
 
 %center
   - if @order.prev('self')
-    = link_to "< Prev", me_user_order_path(current_user, @order.prev('self')), class: ['btn','btn-sm', 'btn-warning']
+    = link_to "< 前往个人上一订单", me_user_order_path(current_user, @order.prev('self')), class: ['btn','btn-sm', 'btn-warning']
   - if @order.next('self')
-    = link_to "Next >", me_user_order_path(current_user, @order.next('self')), class: ['btn','btn-sm', 'btn-info']
+    = link_to "前往个人下一订单 >", me_user_order_path(current_user, @order.next('self')), class: ['btn','btn-sm', 'btn-info']
 
 - if @order.editable?
   = link_to '编辑', edit_me_user_order_path(current_user, @order)

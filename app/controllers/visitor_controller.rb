@@ -7,6 +7,10 @@ class VisitorController < ApplicationController
     end
   end
 
+  def about
+    render :layout => 'signin'
+  end
+
   def top
     redirect_to visitor_goods_path
   end

@@ -1,3 +1,8 @@
+%h3 商品详细
+
+.alert.alert-info
+  NOTICE: 管理员页面
+
 %table.table.table-condensed
   %tr
     %th 标题
@@ -25,28 +30,28 @@
     %td #{@good.price} 日元
   %tr
     %th 建议价格
-    %td #{@good.price*0.06} 人民币
+    %td #{@good.sale_price} 人民币
   %tr
     %th 状态
     %td= @good.released? ? '可下单' : '草稿'
   %tr
     %th 商品图1
-    %td= @good.image_1? ? image_tag(@good.image_1_url) : image_tag("no.jpg")
+    %td= @good.image_1? ? image_tag(@good.image_1_url) : '暂无'
   %tr
     %th 商品图2
-    %td= @good.image_2? ? image_tag(@good.image_2_url) : image_tag("no.jpg")
+    %td= @good.image_2? ? image_tag(@good.image_2_url) : '暂无'
   %tr
     %th 商品图3
-    %td= @good.image_3? ? image_tag(@good.image_3_url) : image_tag("no.jpg")
+    %td= @good.image_3? ? image_tag(@good.image_3_url) : '暂无'
   %tr
     %th 备注说明
     %td= simple_format utf8(@good.comment)
 
 %center
   - if @good.prev
-    = link_to "< Prev", admin_good_path(@good.prev), class: ['btn','btn-sm', 'btn-warning']
+    = link_to "< 前往上一商品", admin_good_path(@good.prev), class: ['btn','btn-sm', 'btn-warning']
   - if @good.next
-    = link_to "Next >", admin_good_path(@good.next), class: ['btn','btn-sm', 'btn-info']
+    = link_to "前往下一商品 >", admin_good_path(@good.next), class: ['btn','btn-sm', 'btn-info']
 
 = link_to '编辑', edit_admin_good_path(@good)
 \|
