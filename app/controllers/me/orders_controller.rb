@@ -25,7 +25,8 @@ class Me::OrdersController < MeController
     if @order.save
       redirect_to me_user_order_path(current_user, @order), notice: '创建新订单成功.'
     else
-      render action: 'new'
+      @good = Good.released.find(order_params[:good_id])
+      redirect_to visitor_good_path(@good), notice: '创建新订单失败：商品不存在或缺少数量！'
     end
   end
 

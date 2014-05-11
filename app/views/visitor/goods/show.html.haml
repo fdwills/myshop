@@ -63,7 +63,7 @@
       .col-sm-offset-3
         = t.submit '下单', class: ['btn', 'btn-md', 'btn-primary']
 - else
-  %h3 请先登录
+  %p= link_to '请先登录', login_path
 
 - if admin?
   = link_to '编辑', edit_admin_good_path(@good)

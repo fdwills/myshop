@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :good
 
+  validates :quantity, presence: true, numericality: { only_integer: true }
   scope :recent , -> { order('created_at DESC') }
   scope :released, -> { all }
   STATES = {

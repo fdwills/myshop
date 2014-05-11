@@ -17,6 +17,7 @@ class Good < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 255 }
   validates_inclusion_of :state, :in => [ST_RELEASED, ST_DRAFT]
+  validates :price, presence: true, numericality: { only_integer: true }
 
   def released?
     self.state == ST_RELEASED
