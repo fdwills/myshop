@@ -2,7 +2,7 @@ class Admin::SystemVariablesController < AdminController
   before_action :set_system_variable, only: [:show, :edit, :update, :destroy]
 
   def index
-    @system_variables = SystemVariable.recent.page(params[:page]).per(10)
+    @system_variables = SystemVariable.recent.page(params[:page]).per(20)
   end
 
   def show

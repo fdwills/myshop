@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def lastest_update
-    Inforamtion.recent.page(params[:page]).per(10)
+    Inforamtion.recent.page(params[:page]).per(20)
   end
 
   def login?

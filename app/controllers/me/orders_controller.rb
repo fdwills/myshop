@@ -3,7 +3,7 @@ class Me::OrdersController < MeController
 
   # GET /orders
   def index
-    @orders = current_user.orders.recent.page(params[:page]).per(10)
+    @orders = current_user.orders.recent.page(params[:page]).per(20)
   end
 
   # GET /orders/1

@@ -2,7 +2,7 @@ class Admin::GoodsController < AdminController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   def index
-    @goods = Good.recent.page(params[:page]).per(10)
+    @goods = Good.recent.page(params[:page]).per(20)
   end
 
   def show
