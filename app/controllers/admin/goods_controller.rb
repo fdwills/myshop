@@ -1,5 +1,5 @@
 class Admin::GoodsController < AdminController
-  before_action :set_good, only: [:show, :edit, :update, :destroy]
+  before_action :set_good, only: [:show, :edit, :update, :destroy, :recache]
 
   def index
     @goods = Good.recent.page(params[:page]).per(20)
@@ -35,6 +35,11 @@ class Admin::GoodsController < AdminController
   def destroy
     @good.destroy
     redirect_to admin_goods_path, notice: '商品成功删除.'
+  end
+
+  def recache
+    @good.recache
+    redirect_to admin_goods_path, notice: "商品No.#{@good.id}缓存成功更新."
   end
 
   private

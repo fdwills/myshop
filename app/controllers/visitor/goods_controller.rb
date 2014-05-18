@@ -5,6 +5,6 @@ class Visitor::GoodsController < VisitorController
   end
 
   def show
-    @good = Good.released.find(params[:id])
+    @good = Good.released.get_or_cache(params[:id])
   end
 end

@@ -26,4 +26,6 @@ Myapp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.cache_store = :dalli_store, 'localhost', { namespace: 'dev-shop', expires_in: 1.day, compress: true }
 end

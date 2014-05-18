@@ -25,7 +25,12 @@ Myapp::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :goods
+    resources :goods do
+      member do
+        put :recache
+      end
+    end
+
     resources :orders do
       member do
         put :change_state

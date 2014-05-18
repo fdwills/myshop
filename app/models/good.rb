@@ -1,5 +1,6 @@
 class Good < ActiveRecord::Base
   include PrevNext
+  include Cache
   # 0 for release, 1 for draft
   ST_RELEASED = 0
   ST_DRAFT    = 1
