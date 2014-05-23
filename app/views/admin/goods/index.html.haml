@@ -9,12 +9,14 @@
   %tr.info
     %th 标题
     %th 描述
+    %th 状态
     %th 创建日期
     %th 更新缓存
   - @goods.try(:each) do |good|
     %tr
       %td= link_to utf8_html(good.title), admin_good_path(good)
       %td= short_utf8_html(good.description_c, 16)
+      %td= good.released? ? '可下单' : '草稿'
       %td= good.created_at.to_s(:db)
       %td= link_to '更新缓存', recache_admin_good_path(good), method: :put, class: ['btn', 'btn-sm', 'btn-primary']
 %center= paginate @goods if @goods.present?
