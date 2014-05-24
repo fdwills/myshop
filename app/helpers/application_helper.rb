@@ -22,4 +22,12 @@ module ApplicationHelper
     return unless content
     content.force_encoding("UTF-8")
   end
+
+  def tab?(brand, tab)
+    if brand.present? && brand.eql?(tab)
+      'active'
+    else
+      nil
+    end
+  end
 end

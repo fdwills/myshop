@@ -7,7 +7,12 @@ Myapp::Application.routes.draw do
         get :home
       end
     end
-    resources :goods, only: [:index, :show]
+    resources :goods, only: [:index, :show] do
+      collection do
+        get :brand
+        get :search
+      end
+    end
     resources :orders, only: [:index, :show]
   end
 

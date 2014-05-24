@@ -2,6 +2,12 @@
 .alert.alert-info
   NOTICE: 点击进入商品详细介绍页面之后可以下单（需登录）
 
+%ul.nav.nav-tabs
+  %li{class: @brand.nil? ? 'active' : nil}= link_to '全部', visitor_goods_path()
+  %li{class: tab?(@brand, 'SKII')}= link_to 'SKII', brand_visitor_goods_path(brand: 'SKII')
+  %li{class: tab?(@brand, 'FANCL')}= link_to 'FANCL', brand_visitor_goods_path(brand: 'FANCL')
+  %li{class: tab?(@brand, 'SUQQU')}= link_to 'SUQQU', brand_visitor_goods_path(brand: 'SUQQU')
+
 %table.table.table-condensed
   %tr.info
     %th 标题
