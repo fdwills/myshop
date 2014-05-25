@@ -24,7 +24,15 @@ class Good < ActiveRecord::Base
     self.state == ST_RELEASED
   end
 
+  def self.get_cached_rate_or_default
+    if value = Rails.cache.read("rate")
+      value
+    else
+      RMB_RATE
+    end
+  end
+
   def sale_price
-    (self.price * RMB_RATE * (1 + EARN_RATE)).ceil
+    (self.price * Good.get_cached_rate_or_default * (1 + EARN_RATE)).ceil
   end
 end

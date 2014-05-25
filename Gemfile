@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem 'rmagick'
 gem 'redcarpet'
 gem 'dalli'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'
