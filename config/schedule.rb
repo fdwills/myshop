@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 #
-every 2.hours do
-  rake "current_rate:generate", lock_file: '/data/current_rate.lock', log_file: '/data/log/current_rate'
+every 4.hours do
+  rake "current_rate:generate"
 end

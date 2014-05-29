@@ -69,3 +69,10 @@
   = link_to '编辑', edit_admin_good_path(@good)
   \|
 = link_to_function "返回", "history.back()"
+
+- unless mobile_user_agent?
+  %p
+    %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+    %ins.adsbygoogle{"data-ad-client" => "ca-pub-6909156531691461", "data-ad-slot" => "1604039034", :style => "display:inline-block;width:728px;height:90px"}
+    :javascript
+      (adsbygoogle = window.adsbygoogle || []).push({});
